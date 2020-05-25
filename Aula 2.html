@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Aula 2</title>
+</head>
+<body>
+    
+<div id="app" class="container">
+    <div class="row"> 
+
+        <div class="col-4"></div>
+
+        <div class="col-4 text-center my-3">
+            <h4>{{titulo}}</h4>
+
+            <input v-model="novoTarefa"  ref="novoTarefa" type="text" class="form-control my-2">
+            <button @click="addTarefa" class="btn btn-success btn-block">Adicionar</button>
+
+            <ul v-for="tarefa in Tarefas" class="list-group mt-2">
+                <li class="list-group-item mt-1">{{ tarefa }}</li>
+            </ul>
+
+            
+            <p>
+               
+            </p>
+
+        </div>
+
+        <div class="col-4"></div>
+        
+
+
+
+    </div>
+
+    <!-- <h4>{{titulo}}</h4> -->
+
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+const app = new Vue({
+    el: '#app',
+    data:{
+        titulo: 'FUT BAIXINHO',
+        novoTarefa: '',
+        Tarefas: []
+    },
+    methods: {
+        addTarefa: function(){
+            //this.Tarefas = [this.novoTarefa,...this.Tarefas]
+            if(this.novoTarefa !== ''){
+                this.Tarefas.push(this.novoTarefa)
+                this.novoTarefa = ''
+                this.$refs.novoTarefa.focus()
+            }    
+        }
+    }
+}) 
+</script>
+
+
+
+</body>
+</html>

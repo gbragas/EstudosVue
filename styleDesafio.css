@@ -1,0 +1,37 @@
+body{
+    background-color: cornflowerblue;
+}
+.logo{
+    margin-top: 100px;
+    color: white;
+}
+.input{
+    width:250px;
+    margin-left: 20px;
+    color: gray;
+    float: left;
+}
+.botao{
+    margin-top: 8px;
+    padding-left: 23px;
+    padding-right: 23px;
+    color: white;
+    background-color:sandybrown;
+    border: 1px solid slateblue;
+}
+.botao:hover{
+    color: white;
+    background-color: sandybrown;
+}
+.botao:active{
+    color: white;
+    background-color: sandybrown;
+    border: 1px solid cyan;
+}
+.letra-error{
+    color: red;
+    font-size: 15px;
+}
+.border-danger{
+    border: 1.5px solid red;
+}

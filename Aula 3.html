@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudo Vue - 3</title>
+</head>
+<body>
+
+    
+    <div id="app">
+
+        <ul>
+            <li v-for="(produto, index) in produtos">
+                {{ produto.titulo }} - R$:{{ produto.preco }} - Total: R$:{{ produto.preco * produto.qnt }}
+            </li>
+            <h3>{{ nomeCompleto }}</h3>
+        </ul>
+        <input v-model="email" type="text">
+        <p>{{ email }}</p>
+        <p v-if="erro">Digita a porra de um email</p>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                primeiroNome: 'Henrique',
+                ultimoNome: 'da Silva',
+                meioNome: 'Futema',
+                produtos: [
+                    {
+                        titulo: 'Tv',
+                        preco: 2000,
+                        qnt: 3
+                    },
+                    {
+                        titulo: 'Celular',
+                        preco: 1500,
+                        qnt: 5
+                    },
+                    {
+                        titulo: 'Florence',
+                        preco: 30000,
+                        qnt: 2
+                    }
+                ],
+                email: '',
+                erro: false
+            },
+            computed: {
+                nomeCompleto: function(){
+                    return `${this.primeiroNome} ${this.meioNome} ${this.ultimoNome}`
+                }
+            },
+            watch: {
+                email: function(){
+                    if (this.email.includes('@') && this.email.endsWith('.com')){
+                        this.erro = false
+                    } 
+                    else {
+                        this.erro = true
+                    }
+                }
+            },
+            created: function(){
+                console.log("entrei na página");
+                axios.get('https://api.github.com/repos/vuejs/vue')
+                .then(response => {
+                    console.log(response.data)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+            }
+        })
+
+    </script>
+
+
+
+</body>
+</html>
